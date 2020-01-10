@@ -22,7 +22,7 @@ header {
     display: flex;
 }
 
-.caard {
+.card {
     position: relative;
     width: calc(25% - 15px);
     height: 120px;
@@ -70,4 +70,39 @@ header {
     opacity: .3;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.card-status {
+    margin: 20px;
+}
+
+.card-number {
+    margin: 20px;
+}
+
+.task {
+    font-size: 14px;
+}
+
+.number {
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 30px;
+}
+
+.realtime {
+    float: right;
+    padding: 5px;
+    border-radius: 2px;
+    font-size: 12px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.percent {
+    float: right;
+    color: white;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 30px;
 }
