@@ -48,3 +48,26 @@ header {
     background-color: #3b67a4;
     margin-right: 0;
 }
+
+.icon {
+    display: block;
+    height: 100px;
+    line-height: 100px;
+    font-size: 100px;
+    margin: 10px auto;
+    -webkit-transition: font-size 0.25s linear, width 0.25s linear;
+    -moz-transition: font-size 0.25s linear, width 0.25s linear;
+    transition: font-size 0.25s linear, width 0.25s linear;
+}
+
+.cards .iconfont {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    font-family: "iconfont" !important;
+    color: white;
+    font-style: normal;
+    opacity: .3;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
