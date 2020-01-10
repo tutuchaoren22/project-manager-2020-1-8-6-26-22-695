@@ -1,7 +1,8 @@
-const API_ROOT = " http://localhost:3000/projects ";
+const API_ROOT = "http://localhost:3000/projects";
 
 let confirmPage = document.getElementsByClassName("confirm-page")[0];
 let deleteId;
+let newData;
 
 function getListData() {
     let options = {
@@ -18,6 +19,7 @@ function getListData() {
 }
 
 function updatePage(data) {
+    newData = data;
     renderUserList(data);
     changeStatus();
     let taskCount = calculateNumber(data);
@@ -90,7 +92,7 @@ function changeNumber(taskCount) {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>`;
             } else {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>
-                    <span class="percent">${count / taskCount[0] * 100}% </span>`;
+                    <span class="percent">${Math.floor((count / taskCount[0]) * 100)}% </span>`;
             }
         }
 
@@ -109,9 +111,12 @@ function clickEvent(event) {
             canclePage();
             break;
         case 'confirm':
-            console.log(deleteId);
-            // deleteItemData(deleteId);
-            deleteItem(deleteId);
+            deleteItemData(deleteId);
+            newData = newData.filter(item => {
+                return item.id != deleteId;
+            });
+            changeNumber(calculateNumber(newData));
+            canclePage();
             break;
         case 'cancel':
             canclePage();
@@ -132,13 +137,14 @@ function canclePage() {
 
 function deleteItem(id) {
     let itemList = document.getElementsByClassName('item-list')[0];
-    let item = document.querySelector("tr[dataid='" + id + "']");
+    let item = document.querySelector(`tr[dataid='${id}']`);
     itemList.removeChild(item);
 }
 
 function deleteItemData(id) {
     let options = {
-        url: API_ROOT + '/' + id,
+        url: API_ROOT + "/" + id,
+        // method: "DELETE",
         method: "DELETE",
         success: function(res) {
             deleteItem(id);
