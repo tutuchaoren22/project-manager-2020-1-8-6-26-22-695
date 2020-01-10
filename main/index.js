@@ -34,7 +34,7 @@ function renderUserList(data) {
                   <td ><div class="description">${cur.description}</div></td>
                   <td>${cur.endTime}</td>
                   <td class='status'>${cur.status}</td>
-                  <td><button id='btn'>删除</button></td>
+                  <td><button class='delete-button'>删除</button></td>
               </tr>`;
     }, '');
 }
@@ -97,8 +97,24 @@ function changeNumber(taskCount) {
 }
 
 
-function deleteItem(event) {
-
+function clickEvent(event) {
+    let eventTarget = event.target;
+    switch (eventTarget.className) {
+        case 'delete-button':
+            deleteConfirmPage(eventTarget);
+            break;
+        case 'icon-cancle':
+            canclePage(eventTarget);
+            break;
+        case 'confirm':
+            deleteItem(eventTarget);
+            break;
+        case 'cancel':
+            canclePage(eventTarget);
+            break;
+        default:
+            break;
+    }
 
 
 }
