@@ -82,17 +82,20 @@ function calculateNumber(data) {
 
 
 function changeNumber(taskCount) {
-    let number = document.getElementsByClassName('number');
-    let percent = document.getElementsByClassName('percent');
-    $itemList.innerHTML = data.reduce((acc, cur) => {
-        return acc += `<tr data-id='${cur.id}'>
-                <td>${cur.name}</td>
-                <td ><div class="description">${cur.description}</div></td>
-                <td>${cur.endTime}</td>
-                <td class='status'>${cur.status}</td>
-                <td><button id='btn'>删除</button></td>
-            </tr>`;
-    }, '');
+    let cardNumbers = document.getElementsByClassName('card-number');
+    // let percents = document.getElementsByClassName('percent');
+
+    taskCount.forEach(
+        (count, index) => {
+            if (index === 0) {
+                cardNumbers[index].innerHTML = `<span class="number">${count}</span>`;
+            } else {
+                cardNumbers[index].innerHTML = `<span class="number">${count}</span>
+                    <span class="percent">${count / taskCount[0] * 100}% </span>`;
+            }
+        }
+
+    )
 }
 
 getListData();
