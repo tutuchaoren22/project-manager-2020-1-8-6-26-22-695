@@ -13,3 +13,11 @@ body {
     font-family: serif, "Microsoft YaHei";
     margin: 20px;
 }
+
+header {
+    width: 100%;
+}
+
+.cards {
+    display: flex;
+}
