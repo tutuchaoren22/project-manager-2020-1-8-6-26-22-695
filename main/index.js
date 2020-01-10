@@ -6,13 +6,21 @@ function getListData() {
         url: API_ROOT,
         method: "GET",
         success: function(res) {
-            renderUserList(res);
+            updatePage(res);
         },
         fail: function(error) {
             console.log('ERROR');
         }
     };
     ajax(options);
+}
+
+function updatePage(data) {
+    renderUserList(data);
+    changeStatus();
+    let taskCount = calculateNumber(data);
+    console.log(taskCount);
+    changeNumber(taskCount);
 }
 
 function renderUserList(data) {
@@ -25,9 +33,65 @@ function renderUserList(data) {
                   <td>${cur.name}</td>
                   <td ><div class="description">${cur.description}</div></td>
                   <td>${cur.endTime}</td>
-                  <td>${cur.status}</td>
+                  <td class='status'>${cur.status}</td>
                   <td><button id='btn'>删除</button></td>
               </tr>`;
+    }, '');
+}
+
+function changeStatus() {
+    let status = document.getElementsByClassName('status');
+    for (let i = 0; i < status.length; i++) {
+        switch (status[i].innerHTML) {
+            case 'ACTIVE':
+                status[i].style.color = '#666666';
+                break;
+            case 'PENDING':
+                status[i].style.color = '#ee706d';
+                break;
+            case 'CLOSED':
+                status[i].style.color = '#f7da47';
+                break;
+        }
+    }
+
+}
+
+function calculateNumber(data) {
+    let activeCount = 0;
+    let pendingCount = 0;
+    let closedCount = 0;
+    data.forEach(task => {
+        switch (task.status) {
+            case 'ACTIVE':
+                activeCount += 1;
+                break;
+            case 'PENDING':
+                pendingCount += 1;
+                break;
+            case 'CLOSED':
+                closedCount += 1;
+                break;
+        }
+
+    });
+    let allCount = activeCount + pendingCount + closedCount;
+    let taskCount = [allCount, activeCount, pendingCount, closedCount];
+    return taskCount;
+}
+
+
+function changeNumber(taskCount) {
+    let number = document.getElementsByClassName('number');
+    let percent = document.getElementsByClassName('percent');
+    $itemList.innerHTML = data.reduce((acc, cur) => {
+        return acc += `<tr data-id='${cur.id}'>
+                <td>${cur.name}</td>
+                <td ><div class="description">${cur.description}</div></td>
+                <td>${cur.endTime}</td>
+                <td class='status'>${cur.status}</td>
+                <td><button id='btn'>删除</button></td>
+            </tr>`;
     }, '');
 }
 
