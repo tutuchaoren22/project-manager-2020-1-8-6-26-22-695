@@ -92,7 +92,7 @@ function changeNumber(taskCount) {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>`;
             } else {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>
-                    <span class="percent">${Math.floor((count / taskCount[0]) * 100)}% </span>`;
+                    <span class="percent">${taskCount[0]===0 ? 0 : Math.round((count / taskCount[0]) * 100)}% </span>`; //
             }
         }
 
