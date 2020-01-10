@@ -1,5 +1,7 @@
 const API_ROOT = " http://localhost:3000/projects ";
-let $itemList = document.getElementById('item-list');
+
+let confirmPage = document.getElementsByClassName("confirm-page")[0];
+let deleteId;
 
 function getListData() {
     let options = {
@@ -19,7 +21,6 @@ function updatePage(data) {
     renderUserList(data);
     changeStatus();
     let taskCount = calculateNumber(data);
-    console.log(taskCount);
     changeNumber(taskCount);
 }
 
@@ -27,9 +28,9 @@ function renderUserList(data) {
     if (!Array.isArray(data) && !data instanceof Array) {
         return false;
     }
-
-    $itemList.innerHTML = data.reduce((acc, cur) => {
-        return acc += `<tr data-id='${cur.id}'>
+    let itemList = document.getElementsByClassName('item-list')[0];
+    itemList.innerHTML = data.reduce((acc, cur) => {
+        return acc += `<tr dataid='${cur.id}'>
                   <td>${cur.name}</td>
                   <td ><div class="description">${cur.description}</div></td>
                   <td>${cur.endTime}</td>
@@ -101,21 +102,52 @@ function clickEvent(event) {
     let eventTarget = event.target;
     switch (eventTarget.className) {
         case 'delete-button':
-            deleteConfirmPage(eventTarget);
+            deleteId = eventTarget.parentElement.parentElement.getAttribute('dataid');
+            deleteConfirmPage();
             break;
         case 'icon-cancle':
-            canclePage(eventTarget);
+            canclePage();
             break;
         case 'confirm':
-            deleteItem(eventTarget);
+            console.log(deleteId);
+            // deleteItemData(deleteId);
+            deleteItem(deleteId);
             break;
         case 'cancel':
-            canclePage(eventTarget);
+            canclePage();
             break;
         default:
             break;
     }
-
-
 }
+
+
+function deleteConfirmPage() {
+    confirmPage.style.display = "block";
+}
+
+function canclePage() {
+    confirmPage.style.display = "none";
+}
+
+function deleteItem(id) {
+    let itemList = document.getElementsByClassName('item-list')[0];
+    let item = document.querySelector("tr[dataid='" + id + "']");
+    itemList.removeChild(item);
+}
+
+function deleteItemData(id) {
+    let options = {
+        url: API_ROOT + '/' + id,
+        method: "DELETE",
+        success: function(res) {
+            deleteItem(id);
+        },
+        fail: function(error) {
+            console.log('ERROR');
+        }
+    };
+    ajax(options);
+}
+
 getListData();
