@@ -70,9 +70,22 @@
                     <th>操作</th>
                 </tr>
             </thead>
-            <tbody id="item-list">
+            <tbody id="item-list" onclick="deleteItem(event)">
             </tbody>
         </table>
+        <div class="confirm-page">
+            <div class="confirm-div">
+                <div class="icon-cancle">&#xe600;</div>
+                <span class="icon-attention">&#xe60a;</span>
+                <span class="attention-messege">提示</span>
+                <div class="confirm-messege">确认删除该项目吗？</div>
+                <div class="confirm-button">
+                    <input type="button" class="confirm" value="确认" />
+                    <input type="button" class="cancel" value="取消" />
+                </div>
+            </div>
+        </div>
+
     </container>
 
 

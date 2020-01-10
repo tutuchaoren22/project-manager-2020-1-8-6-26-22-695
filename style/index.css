@@ -175,3 +175,77 @@ button {
     padding: 8px 12px 8px 12px;
     border-radius: 5px;
 }
+
+.confirm-page {
+    display: none;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(224, 217, 224, 0.5);
+    z-index: 0;
+}
+
+.confirm-div {
+    position: relative;
+    top: 200px;
+    margin: 0 auto;
+    width: 340px;
+    height: 150px;
+    border-radius: 5px;
+    background-color: rgb(255, 255, 255);
+}
+
+.confirm-div .icon-cancle {
+    text-align: right;
+    padding: 20px 20px 0 0;
+    font-size: 16px;
+    font-family: "iconfont" !important;
+    color: black;
+    font-style: normal;
+}
+
+.confirm-div .icon-attention {
+    margin-left: 20px;
+    font-size: 24px;
+    font-family: "iconfont" !important;
+    color: #F1C826;
+    font-style: normal;
+}
+
+.attention-messege {
+    line-height: 24px;
+    color: #333;
+    font-size: 20px;
+}
+
+.confirm-messege {
+    color: #666;
+    margin: 10px 0 10px 55px;
+    font-size: 14px;
+}
+
+.confirm-button {
+    text-align: right;
+    margin-right: 20px;
+}
+
+.confirm {
+    background-color: #3050FE;
+    border: 1px solid rgb(218, 218, 218);
+    border-right: 1px solid rgb(145, 145, 145);
+    border-bottom: 1px solid rgb(145, 145, 145);
+    border-radius: 3px;
+    color: white;
+    padding: 5px 8px 5px 8px;
+}
+
+.cancel {
+    border: 1px solid rgb(218, 218, 218);
+    border-right: 1px solid rgb(145, 145, 145);
+    border-bottom: 1px solid rgb(145, 145, 145);
+    border-radius: 3px;
+    background: white;
+    padding: 5px 8px 5px 8px;
+}

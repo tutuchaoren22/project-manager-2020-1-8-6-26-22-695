@@ -83,8 +83,6 @@ function calculateNumber(data) {
 
 function changeNumber(taskCount) {
     let cardNumbers = document.getElementsByClassName('card-number');
-    // let percents = document.getElementsByClassName('percent');
-
     taskCount.forEach(
         (count, index) => {
             if (index === 0) {
@@ -98,4 +96,10 @@ function changeNumber(taskCount) {
     )
 }
 
+
+function deleteItem(event) {
+
+
+
+}
 getListData();
