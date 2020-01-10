@@ -144,7 +144,6 @@ function deleteItem(id) {
 function deleteItemData(id) {
     let options = {
         url: API_ROOT + "/" + id,
-        // method: "DELETE",
         method: "DELETE",
         success: function(res) {
             deleteItem(id);
