@@ -21,3 +21,30 @@ header {
 .cards {
     display: flex;
 }
+
+.caard {
+    position: relative;
+    width: calc(25% - 15px);
+    height: 120px;
+    margin-right: 20px;
+    border-radius: 5px;
+    color: white;
+}
+
+.card-all {
+    background-color: #31b48d;
+    /* background: url(../images/bg02.png) #25282e left top no-repeat; */
+}
+
+.card-active {
+    background-color: #38a1f2;
+}
+
+.card-pending {
+    background-color: #7538c7;
+}
+
+.card-closed {
+    background-color: #3b67a4;
+    margin-right: 0;
+}
