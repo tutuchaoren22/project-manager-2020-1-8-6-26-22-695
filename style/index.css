@@ -63,6 +63,37 @@ header {
     opacity: .3;
 }
 
+.table-nav {
+    display: -webkit-inline-box;
+}
+
+.search {
+    position: absolute;
+    right: 20px;
+    margin-top: 20px;
+}
+
+.input-search {
+    position: relative;
+    left: 29px;
+    width: 200px;
+    height: 32px;
+    padding: 0 38px 0 12px;
+    border: 1px solid #eee;
+    border-radius: 20px;
+}
+
+.icon-search {
+    position: relative;
+    top: 3px;
+    right: 10px;
+    font-family: "iconfont" !important;
+    font-style: normal;
+    font-size: 20px;
+    opacity: .3;
+    color: #aaa;
+}
+
 table .iconfont {
     font-family: "iconfont" !important;
     font-style: normal;
