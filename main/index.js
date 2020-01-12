@@ -203,4 +203,19 @@ function deleteItemData(id) {
     ajax(options);
 }
 
+
+
+function searchProject() {
+    let x = document.getElementById("search-item").value;
+    console.log(x);
+    if (x) {
+        let itemList = document.getElementsByClassName('item-list')[0];
+        newData = newData.filter(
+            item => item.name.search(x) !== -1
+        );
+        console.log(newData);
+        reloadPage();
+        changeStatus();
+    }
+}
 getListData();
