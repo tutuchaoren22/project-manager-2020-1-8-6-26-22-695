@@ -57,7 +57,6 @@ function changeStatus() {
                 break;
         }
     }
-
 }
 
 function calculateNumber(data) {
@@ -76,7 +75,6 @@ function calculateNumber(data) {
                 closedCount += 1;
                 break;
         }
-
     });
     let allCount = activeCount + pendingCount + closedCount;
     let taskCount = [allCount, activeCount, pendingCount, closedCount];
@@ -92,10 +90,9 @@ function changeNumber(taskCount) {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>`;
             } else {
                 cardNumbers[index].innerHTML = `<span class="number">${count}</span>
-                    <span class="percent">${taskCount[0]===0 ? 0 : Math.round((count / taskCount[0]) * 100)}% </span>`; //
+                    <span class="percent">${taskCount[0]===0 ? 0 : Math.round((count / taskCount[0]) * 100)}% </span>`;
             }
         }
-
     )
 }
 
@@ -121,11 +118,62 @@ function clickEvent(event) {
         case 'cancel':
             canclePage();
             break;
+        case 'iconfont icon-asc':
+            ascSort();
+            break;
+        case 'iconfont':
+            decSort();
+            break;
         default:
             break;
     }
 }
 
+function ascSort() {
+    newData = newData.sort(function(a, b) {
+        let timeA = Number(a.endTime.split('-').join(''));
+        let timeB = Number(b.endTime.split('-').join(''));
+        return timeA - timeB;
+    });
+    reloadPage();
+    changeStatus();
+    changeIconColor('asc');
+}
+
+function decSort() {
+    newData = newData.sort(function(a, b) {
+        let timeA = Number(a.endTime.split('-').join(''));
+        let timeB = Number(b.endTime.split('-').join(''));
+        return timeB - timeA;
+    });
+    reloadPage();
+    changeStatus();
+    changeIconColor('dec');
+}
+
+function reloadPage() {
+    let itemList = document.getElementsByClassName('item-list')[0];
+    var childs = itemList.childNodes;
+    for (var i = childs.length - 1; i >= 0; i--) {  
+        itemList.removeChild(childs[i]);
+    }
+    renderUserList(newData);
+}
+
+function changeIconColor(status) {
+    let ascIcon = document.getElementsByClassName('icon-asc')[0];
+    let decIcon = ascIcon.parentElement.children[2];
+    switch (status) {
+        case 'asc':
+            ascIcon.style.color = '#308DFE';
+            decIcon.style.color = '#aaa';
+            break;
+        case 'dec':
+            decIcon.style.color = '#308DFE';
+            ascIcon.style.color = '#aaa';
+            break;
+    }
+}
 
 function deleteConfirmPage() {
     confirmPage.style.display = "block";

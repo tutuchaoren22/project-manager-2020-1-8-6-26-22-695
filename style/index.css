@@ -10,8 +10,8 @@
 }
 
 body {
-    font-family: serif, "Microsoft YaHei";
     margin: 20px;
+    font-family: serif, "Microsoft YaHei";
 }
 
 header {
@@ -44,8 +44,8 @@ header {
 }
 
 .card-closed {
-    background-color: #3b67a4;
     margin-right: 0;
+    background-color: #3b67a4;
 }
 
 .icon {
@@ -58,9 +58,21 @@ header {
     top: 10px;
     right: 10px;
     font-family: "iconfont" !important;
-    color: white;
     font-style: normal;
+    color: white;
     opacity: .3;
+}
+
+table .iconfont {
+    font-family: "iconfont" !important;
+    font-style: normal;
+    font-size: 20px;
+    opacity: .3;
+    color: #aaa;
+}
+
+table .icon-asc {
+    color: #308DFE;
 }
 
 .card-status,
@@ -98,8 +110,8 @@ h2 {
 
 table {
     width: 100%;
-    text-align: left;
     border-spacing: 0;
+    text-align: left;
     font-size: 15px;
 }
 
@@ -172,10 +184,10 @@ button {
 
 .confirm-div {
     position: relative;
-    top: 200px;
-    margin: 0 auto;
     width: 340px;
     height: 150px;
+    top: 200px;
+    margin: 0 auto;
     border-radius: 5px;
     background-color: rgb(255, 255, 255);
 }
