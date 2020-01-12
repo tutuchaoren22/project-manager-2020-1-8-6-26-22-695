@@ -78,6 +78,7 @@ header {
     left: 29px;
     width: 200px;
     height: 32px;
+    outline: none;
     padding: 0 38px 0 12px;
     border: 1px solid #eee;
     border-radius: 20px;

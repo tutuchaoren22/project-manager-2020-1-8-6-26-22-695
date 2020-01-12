@@ -135,7 +135,7 @@ function ascSort() {
         let timeB = Number(b.endTime.split('-').join(''));
         return timeA - timeB;
     });
-    reloadPage();
+    reloadPage(newData);
     changeStatus();
     changeIconColor('asc');
 }
@@ -146,12 +146,12 @@ function decSort() {
         let timeB = Number(b.endTime.split('-').join(''));
         return timeB - timeA;
     });
-    reloadPage();
+    reloadPage(newData);
     changeStatus();
     changeIconColor('dec');
 }
 
-function reloadPage() {
+function reloadPage(newData) {
     let itemList = document.getElementsByClassName('item-list')[0];
     var childs = itemList.childNodes;
     for (var i = childs.length - 1; i >= 0; i--) {  
@@ -209,12 +209,14 @@ function searchProject() {
     let x = document.getElementById("search-item").value;
     console.log(x);
     if (x) {
-        let itemList = document.getElementsByClassName('item-list')[0];
-        newData = newData.filter(
+        let newDataSearch = newData.filter(
             item => item.name.search(x) !== -1
         );
-        console.log(newData);
-        reloadPage();
+        console.log(newDataSearch);
+        reloadPage(newDataSearch);
+        changeStatus();
+    } else {
+        reloadPage(newData);
         changeStatus();
     }
 }

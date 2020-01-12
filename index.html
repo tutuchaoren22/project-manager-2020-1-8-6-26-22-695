@@ -55,8 +55,8 @@
         <div class="table-nav">
             <h2>项目列表</h2>
             <div class="search">
-                <input id="search-item" class="input-search" placeholder="请输入项目名中的关键字进行搜索" oninput="searchProject()" />
-                <span class="icon-search">&#xe652;</span>
+                <input id="search-item" class="input-search" placeholder="请输入项目名中的关键字进行搜索" oninput="searchProject()" onkeydown: "searchProject()" />
+                <span class="icon-search" onclick="searchProject()">&#xe652;</span>
             </div>
 
         </div>
